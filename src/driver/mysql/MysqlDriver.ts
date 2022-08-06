@@ -488,7 +488,7 @@ export class MysqlDriver implements Driver {
             value = DateUtils.mixedDateToDateString(value);
 
         } else if (columnMetadata.type === "json") {
-            value = typeof value === "string" ? JSON.parse(value) : value;
+            value = typeof value === "string" && value !== "" ? JSON.parse(value) : value;
 
         } else if (columnMetadata.type === "time") {
             value = DateUtils.mixedTimeToString(value);
